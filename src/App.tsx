@@ -3,13 +3,14 @@ import { Home } from './routes/Home';
 import { About } from './routes/About';
 import { Articles } from './routes/Articles';
 import { Article } from './routes/Article';
+import { Navigation } from './components/Navigation';
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <div>
-          <h1>Blog</h1>
+          <Navigation />
           <main>
             <Routes>
               <Route path="/" element={<Home />} />

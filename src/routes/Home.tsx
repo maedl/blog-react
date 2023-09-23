@@ -1,3 +1,8 @@
 export const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <h1>Font</h1>
+      <p>Lorem ipsum dolor sit amet.</p>
+    </>
+  );
 };
