@@ -9,13 +9,13 @@ export const Article = () => {
   );
 
   return (
-    <>
+    <div className="flex-container">
       <h1>{article?.title}</h1>
       <article>
-        {article?.content.map((paragraph) => (
-          <p>{paragraph}</p>
+        {article?.content.map((paragraph, i) => (
+          <p key={i}>{paragraph}</p>
         ))}
       </article>
-    </>
+    </div>
   );
 };
