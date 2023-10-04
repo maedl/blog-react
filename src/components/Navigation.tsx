@@ -11,12 +11,12 @@ const navLinks: ILink[] = [
     title: 'Home',
   },
   {
-    path: '/about',
-    title: 'About',
-  },
-  {
     path: '/articles',
     title: 'Articles',
+  },
+  {
+    path: '/about',
+    title: 'About me',
   },
 ];
 
