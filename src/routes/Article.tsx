@@ -4,6 +4,7 @@ import { NotFound } from './NotFound';
 import { useEffect, useState } from 'react';
 import { getArticleById, likeArticle } from '../services/articleService';
 import { CommentsList } from '../components/CommentsList';
+import { AddCommentForm } from '../components/AddCommentForm';
 
 export const Article = () => {
   const { articleId } = useParams();
@@ -26,6 +27,7 @@ export const Article = () => {
     if (alreadyLiked) return;
 
     console.log('Like clicked');
+    console.log(article);
     const newLikeAmount: number | undefined = await likeArticle(articleId);
     if (newLikeAmount !== undefined && article) {
       setArticle({ ...article, likes: newLikeAmount });
@@ -48,6 +50,7 @@ export const Article = () => {
           article.likes === 1 ? 'like' : 'likes'
         }`}</div>
         <button onClick={handleLikeClick}>Like</button>
+        <AddCommentForm article={article} setArticle={setArticle} />
         <CommentsList comments={article?.comments} />
       </article>
     </div>

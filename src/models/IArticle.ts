@@ -1,7 +1,7 @@
 import { IComment } from './IComment';
 
 export interface IArticle {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   content: string[];
