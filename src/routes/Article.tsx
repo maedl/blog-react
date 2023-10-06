@@ -3,6 +3,7 @@ import { IArticle } from '../models/IArticle';
 import { NotFound } from './NotFound';
 import { useEffect, useState } from 'react';
 import { getArticleById } from '../services/articleService';
+import { CommentsList } from '../components/CommentsList';
 
 export const Article = () => {
   const { articleId } = useParams();
@@ -35,6 +36,7 @@ export const Article = () => {
           <p key={i}>{paragraph}</p>
         ))}
         <button onClick={handleLikeClick}>Like</button>
+        <CommentsList comments={article?.comments} />
       </article>
     </div>
   );
