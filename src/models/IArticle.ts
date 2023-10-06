@@ -6,4 +6,5 @@ export interface IArticle {
   description: string;
   content: string[];
   comments: IComment[];
+  likes: number;
 }
