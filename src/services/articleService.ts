@@ -43,11 +43,11 @@ export const addComment = async (
   comment: IComment,
   articleId: string | undefined
 ): Promise<IComment[] | undefined> => {
-  console.log(articleId);
   if (!articleId) return;
+
   const url = `${BASE_URL}:${PORT}/api/articles/${articleId}/new-comment`;
   const responseData = await post<IComment[], IComment>(url, comment);
-  console.log('response', responseData);
+
   if (!responseData) return;
 
   return responseData;

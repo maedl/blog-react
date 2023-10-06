@@ -15,15 +15,16 @@ export const AddCommentForm = ({ article, setArticle }: props) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!article) return;
-    console.log('Submitted');
-    setName('');
-    setText('');
+
     const comment: IComment = { author: name, text };
-    console.log(article._id);
     const newComments = await addComment(comment, article._id);
+
     if (newComments) {
       setArticle({ ...article, comments: newComments });
     }
+
+    setName('');
+    setText('');
   };
 
   return (

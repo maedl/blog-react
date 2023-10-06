@@ -26,8 +26,6 @@ export const Article = () => {
     // todo: stop liking if already liked, even after component (or even page) reload
     if (alreadyLiked) return;
 
-    console.log('Like clicked');
-    console.log(article);
     const newLikeAmount: number | undefined = await likeArticle(articleId);
     if (newLikeAmount !== undefined && article) {
       setArticle({ ...article, likes: newLikeAmount });
