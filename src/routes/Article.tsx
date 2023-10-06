@@ -1,13 +1,27 @@
 import { useParams } from 'react-router-dom';
-import { IArticle, mockArticles } from '../models/IArticle';
+import { IArticle } from '../models/IArticle';
 import { NotFound } from './NotFound';
+import { useEffect, useState } from 'react';
+import { getArticleById } from '../services/articleService';
 
 export const Article = () => {
   const { articleId } = useParams();
+  const [article, setArticle] = useState<IArticle | null>(null);
 
-  const article: IArticle | undefined = mockArticles.find(
-    (article) => article.id === articleId
-  );
+  useEffect(() => {
+    const getData = async () => {
+      if (!articleId) return;
+
+      const fetchedArticle: IArticle | null = await getArticleById(articleId);
+      setArticle(fetchedArticle);
+    };
+
+    getData();
+  }, [articleId]);
+
+  const handleLikeClick = () => {
+    console.log('Like clicked');
+  };
 
   if (!article) {
     return <NotFound componentType={'article'} />;
@@ -20,6 +34,7 @@ export const Article = () => {
         {article?.content.map((paragraph, i) => (
           <p key={i}>{paragraph}</p>
         ))}
+        <button onClick={handleLikeClick}>Like</button>
       </article>
     </div>
   );

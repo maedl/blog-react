@@ -1,3 +1,4 @@
+import { IArticle } from '../models/IArticle';
 import { get } from './baseService';
 
 const BASE_URL = import.meta.env.VITE_BASE_API_URL;
@@ -11,10 +12,17 @@ export interface IArticlesSummary {
 
 export const getArticlesSummary = async () => {
   const url = `${BASE_URL}:${PORT}/api/articles/summary`;
-  console.log('url', url);
   const responseData = await get<Array<IArticlesSummary>>(url);
   if (responseData) {
     return responseData;
   }
   return [];
+};
+
+export const getArticleById = async (
+  articleId: string
+): Promise<IArticle | null> => {
+  const url = `${BASE_URL}:${PORT}/api/articles/${articleId}`;
+  const responseData = await get<IArticle>(url);
+  return responseData;
 };

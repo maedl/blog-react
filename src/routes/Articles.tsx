@@ -12,11 +12,10 @@ export const Articles = () => {
 
   useEffect(() => {
     const getData = async () => {
-      console.log('Getting data');
-
       const articlesSummary = await getArticlesSummary();
       setArticlesSummary(articlesSummary);
     };
+
     getData();
   }, []);
 
